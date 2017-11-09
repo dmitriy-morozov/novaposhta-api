@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Novaposhta API</title>
+
+    <!-- Стили для виджета "Поиск отделений" -->
+    <link rel='stylesheet' href='https://apimgmtstorelinmtekiynqw.blob.core.windows.net/content/MediaLibrary/Widget/Map/styles/map.css'/>
+    <!-- Стили для виджета "Отслеживание посылки" -->
+    <link rel='stylesheet' href='https://apimgmtstorelinmtekiynqw.blob.core.windows.net/content/MediaLibrary/Widget/Tracking/styles/tracking.css'/>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="main-wrapper">
+    <div class="data-wrapper">
+        <div class="data data-list">
+            <h1>Справочник географических областей Украины</h1>
+            <div class="data__query">
+                <h2>Received data in json format</h2>
+            </div>
+
+            <div class="data__text">
+                <h2>Received data in text format</h2>
+            </div>
+
+            <button class="data-button" id="getData">
+                <span class="data-button__text">Загрузить данные</span>
+            </button>
+        </div>
+
+        <div class="data">
+            <h1>Расчёт стоимости доставки</h1>
+
+            <div class="data-form-wrapper">
+                <form action="#" method="post" class="data-form">
+                    <label for="CitySender">
+                        <span>Город отправителя</span>
+                        <input name="CitySender" type="text" id="CitySender" value="8d5a980d-391c-11dd-90d9-001a92567626" placeholder="8d5a980d-391c-11dd-90d9-001a92567626">
+                    </label>
+
+                    <label for="CityRecipient">
+                        <span>Город получателя</span>
+                        <input name="CityRecipient" type="text" id="CityRecipient" value="db5c88e0-391c-11dd-90d9-001a92567626" placeholder="db5c88e0-391c-11dd-90d9-001a92567626">
+                    </label>
+
+                    <label for="Weight">
+                        <span>Вес</span>
+                        <input name="Weight" type="number" id="Weight" value="1.5" placeholder="1.5">
+                    </label>
+
+                    <label for="Cost">
+                        <span>Объявленная стоимость</span>
+                        <input name="Cost" type="number" id="Cost" value="145" placeholder="145">
+                    </label>
+
+                    <button type="submit" class="data-form__button" id="sendRequest"><span>Рассчитать стоимость</span></button>
+                </form>
+
+                <div class="data__query">
+                    <h2>Received data in json format</h2>
+                    <span class="data__query-text"></span>
+                </div>
+
+                <div class="data__text">
+                    <h2>Received data in text format</h2>
+                    <span class="data__text-text"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="data">
+            <h1>Виджет «Поиск отделений»</h1>
+            <div id="np-map">
+                <button type="button" id="npw-map-open-button">НАЙБЛИЖЧЕ ВІДДІЛЕННЯ</button>
+                <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPhm7Q29X5ldwjLtA7IMYHU_0xATiWK3A&amp;language=ru"></script>
+            </div>
+        </div>
+
+        <div class="data">
+            <h1>Виджет «Отслеживание посылки»</h1>
+            <div id="np-tracking" class="np-w-br-0">
+                <div id="np-first-state">
+                    <div id="np-tracking-logo"></div>
+                    <div id="np-title">
+                        <div class="np-h1"><span class="np-h1-span1">ВІДСТЕЖЕННЯ</span> <br> <span class="np-h1-span2">ПОСИЛОК</span></div>
+                    </div>
+                    <div id="np-input-container">
+                        <div id="np-clear-input"></div>
+                        <input id="np-user-input" type="text" name="number" placeholder="Номер посилки"></div>
+                    <div id="np-warning-message"></div>
+                    <button id="np-submit-tracking" type="button" disabled="" style="background-color: rgb(209, 213, 218); border: 1px solid rgb(196, 196, 196);"><span id="np-text-button-tracking">ВІДСТЕЖИТИ</span>
+                        <div id="np-load-image-tracking"></div>
+                    </button>
+                    <div id="np-error-status"></div>
+                </div>
+                <div id="np-second-state">
+                    <div id="np-status-icon"></div>
+                    <div id="np-status-message"></div>
+                    <div class="np-track-mini-logo">
+                        <div class="np-line-right"></div>
+                        <div class="np-line-left"></div>
+                    </div>
+                    <a href="#" id="np-more">Детальніше на сайті</a>
+                    <div id="np-return-button"><span id="np-return-button-span">Інша посилка</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<!-- Скрипт для виджета "Поиск отделений" -->
+<script type='text/javascript' id='map' charset='utf-8' data-lang='ua' apiKey='28f832f1925c0bf1cb166d878ae02ae7'
+        data-town='undefined' data-town-name='undefined' data-town-id='undefined'
+        src='https://apimgmtstorelinmtekiynqw.blob.core.windows.net/content/MediaLibrary/Widget/Map/dist/map.min.js'></script>
+
+<!-- Скрипт для виджета "Отслеживание посылки" -->
+<script type='text/javascript' id='track' charset='utf-8' data-lang='ua' apiKey='28f832f1925c0bf1cb166d878ae02ae7'
+        data-town='undefined' data-town-name='undefined' data-town-id='undefined'
+        src='https://apimgmtstorelinmtekiynqw.blob.core.windows.net/content/MediaLibrary/Widget/Tracking/dist/track.min.js'></script>
+
+</body>
+</html>
