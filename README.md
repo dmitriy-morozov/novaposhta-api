@@ -1,5 +1,5 @@
 # NovaPoshta API
-# [dmitriy-morozov.github.io/tic-tac-toe/](https://dmitriy-morozov.github.io/tic-tac-toe/)
+# [dmitriy-morozov.github.io/novaposhta-api](https://dmitriy-morozov.github.io/novaposhta-api/)
 
 ### Features of the project:
 * HTML5, CSS3, jQuery;
